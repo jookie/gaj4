@@ -1,6 +1,6 @@
 ![](https://i.imgur.com/MFfRBSM.png)
 
-# Webrtc-blockchain with bitcoin
+## Webrtc-blockchain with bitcoin
 
 Using a custom blockchain network where peers would mine blocks in the browser and communicate via webrtc in the browser.
 
