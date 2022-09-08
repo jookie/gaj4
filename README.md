@@ -2,7 +2,7 @@
 
 ## Webrtc-blockchain with bitcoin
 
-Using a custom blockchain network where peers would mine blocks in the browser and communicate via webrtc in the browser.
+Using a lockchain network where peers would mine blocks in the browser and communicate via webrtc in the browser.
 
 This module simply initializes socket.io and configures it in a way that single audio/video/screen stream can be shared/relayed over unlimited users without any bandwidth/CPU usage issues. Everything happens peer-to-peer!
 
