@@ -26,7 +26,7 @@
   <script src = "./js/bootstrap.min.js"></script>
   <script src = "/socket.io/socket.io.js"></script>
   <script src = "/dist/RTCMultiConnection.min.js"></script>
-  <link href="./css/t1.css" rel="stylesheet">
+  <link   href= "./css/t1.css" rel="stylesheet">
 </head>
 <body>
   <header style="margin-bottom: 20px;">
@@ -197,12 +197,7 @@
         is large enough.
         <!-- and you choose to charge. -->
       </h6>
-      <h4>Blockchain network - peers would mine blocks in the browser and communicate via webrtc in the browser.
-      This module simply initializes socket.io and configures it in a way that single audio/video/screen stream can be
-      shared/relayed over unlimited users without any bandwidth/CPU usage issues. Everything happens peer-to-peer!</h4>
-      <p>
-        Experiment to see how to write a custom blockchain network where peers would mine blocks in the browser and communicate via webrtc in the browser.
-      </p>
+
       <p>
         This module simply initializes socket.io and configures it in a way that single audio/video/screen
         stream can be
@@ -216,14 +211,15 @@
         <li>It broadcasts media in one-way direction over number of peers.</li>
         <li>All peers can view/watch/listen the broadcast, anonymously.</li>
         <li>"Anonymously" means viewers will NEVER be prompted to allow webcam or mic or screen.</li>
-        <li>Assume like a radio station inside the browser. Remember, it works only browser-to-browser.</li>
+        <li>Assume like a radio station inside the browser. <br>
+          Remember, it works only browser-to-browser.</li>
       </ol>
     </article>
   
   </footer>
 <script>
 // this object is used to get uniquie rooms based on this demo
-// i.e. only those rooms that are created on this page
+// i.e. only those rooms that are created on this page.
 var publicRoomIdentifier = 'dashboard';
 
 var connection = new RTCMultiConnection();
