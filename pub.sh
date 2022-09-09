@@ -4,7 +4,7 @@
 # heroku git:remote -a <your-app-name> 
 # git push heroku is1:master
 git add .
-git commit -am "fix:read-text"
+git commit -am "fix:readme"
 git push 
 # # make sure path matches with npm config get prefix
 # export PATH=/usr/local/share/npm/bin:$PATH
