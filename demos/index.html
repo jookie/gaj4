@@ -1,4 +1,4 @@
-﻿<!-- -->
+﻿
 <!-- 
   "url": "git+https://github.com/ProjectsByJackHe/multiplayer-chess-game-backend.git" 
   * - Backend flow:
@@ -244,7 +244,7 @@ function looper() {
     if (!$('#rooms-list').length) return;
     connection.socket.emit('get-public-rooms', publicRoomIdentifier, function(listOfRooms) {
         updateListOfRooms(listOfRooms);
-        setTimeout(looper, 3000);
+        setTimeout(looper, 3001);
     });
 }
 

@@ -5,13 +5,12 @@
 // Stream a video using Express.js and Socket.io
 // https: //medium.com/3mig4/stream-a-video-using-express-js-and-socket-io-6c4d1dd263b9
 // http://yhsiang.logdown.com/posts/2014/04/17/stream-to-youtube-english
-
 // https://medium.com/the-phi/youtube-downloader-using-node-js-87af683d1dfc
 // npm install cors, express, ytdl-core
-// const express = require(‘express’);
-// const cors = require(‘cors’);
-// const ytdl = require(‘ytdl - exec’);
-// const app = express();
+// const express    = require(‘express’);
+// const cors       = require(‘cors’);
+// const ytdl       = require(‘ytdl - exec’);
+// const app        = express();
 // app.use('/static', express.static('./static'));
 // https://javascript.plainenglish.io/create-a-node-js-video-streaming-application-3095cb2aa52c
 
@@ -21,10 +20,13 @@
 
 // How To Use EJS to Template Your Node Application
 // https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
-const fs = require('fs');
-const path = require('path');
-const url = require('url');
-var httpServer = require('http');
+
+// https://muazkhan.com:9001/demos/
+
+const fs        = require('fs');
+const path      = require('path');
+const url       = require('url');
+var httpServer  = require('http');
 
 const ioServer                  = require('socket.io');
 const RTCMultiConnectionServer  = require('rtcmulticonnection-server');

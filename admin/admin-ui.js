@@ -5,17 +5,16 @@ $('#adminPasswordModel').modal({
     keyboard: false
 });
 
-$('.close-admin-credentials-box').click(function() {
+$('.close-admin-credentials-box').click(function () {
     location.reload();
 });
 
-$('#btn-validate-admin').click(function() {
-    var adminUserName = $('#txt-admin-username'
-    ).val();
+$('#btn-validate-admin').click(function () {
+    var adminUserName = $('#txt-admin-username').val();
     var adminPassword = $('#txt-admin-password').val();
 
-    if(!adminUserName || !adminPassword || !adminUserName.replace(/ /g, '').length || !adminPassword.replace(/ /g, '').length) {
-        alertBox('Admin username and password is required.', 'Invalid Credentials', null, function() {
+    if (!adminUserName || !adminPassword || !adminUserName.replace(/ /g, '').length || !adminPassword.replace(/ /g, '').length) {
+        alertBox('Admin username and password is required.', 'Invalid Credentials', null, function () {
             location.reload();
         });
         return;
@@ -26,21 +25,21 @@ $('#btn-validate-admin').click(function() {
     connectSocket(adminUserName, adminPassword);
 });
 
-setTimeout(function() {
+setTimeout(function () {
     $('#txt-admin-username').focus();
 }, 500);
 
 function connectSocket(username, password) {
-    socket = io.connect('/', {query:"userid=admin&adminUserName=" + username + "&adminPassword=" + password});
-    socket.on('admin', function(message) {
-        if(message.error) {
-            alertBox(message.error, 'Invalid Credentials', null, function() {
+    socket = io.connect('/', { query: "userid=admin&adminUserName=" + username + "&adminPassword=" + password });
+    socket.on('admin', function (message) {
+        if (message.error) {
+            alertBox(message.error, 'Invalid Credentials', null, function () {
                 location.reload();
             });
             return;
         }
 
-        if(message.connected === true) {
+        if (message.connected === true) {
             $('#adminPasswordModel').modal('hide');
             return;
         }
@@ -64,24 +63,24 @@ function connectSocket(username, password) {
         $('#scalable-users').html(message.scalableBroadcastUsers || 0);
         // $('#all-sockts').html(message.allSockets || 0);
     });
-    $('.new-updates-notifier a').click(function(e) {
+    $('.new-updates-notifier a').click(function (e) {
         e.preventDefault();
         $('.new-updates-notifier').hide();
         socket.emit('admin', {
             all: true
         });
     });
-    $('.new-updates-notifier input').click(function() {
+    $('.new-updates-notifier input').click(function () {
         socket.auto_update = true;
         $('.new-updates-notifier a').click();
     });
-    socket.on('connect', function() {
+    socket.on('connect', function () {
         socket.emit('admin', {
             all: true
         });
     });
-    socket.on('disconnect', function() {
-        if(socket.isAdminConnected === true) {
+    socket.on('disconnect', function () {
+        if (socket.isAdminConnected === true) {
             location.reload();
         }
     });
@@ -97,7 +96,7 @@ function updateListOfUsers(listOfUsers) {
         return;
     }
 
-    listOfUsers.forEach(function(user, idx) {
+    listOfUsers.forEach(function (user, idx) {
         var tr = document.createElement('tr');
         var html = '';
 
@@ -117,7 +116,7 @@ function updateListOfUsers(listOfUsers) {
             html += '</thead>';
             html += '<tbody>';
 
-            (user.admininfo.streams || []).forEach(function(stream) {
+            (user.admininfo.streams || []).forEach(function (stream) {
                 html += '<tr>';
                 html += '<td class="max-width" title="' + stream.streamid + '">' + stream.streamid + '</td>';
                 html += '<td>' + stream.tracks + '</td>';
@@ -136,20 +135,20 @@ function updateListOfUsers(listOfUsers) {
         $(tr).html(html);
         $('#users-list').append(tr);
 
-        $(tr).find('.clickable').click(function() {
+        $(tr).find('.clickable').click(function () {
             $('#txt-userid').val($(this).attr('data-userid'));
             $('#view-userinfo').click();
         });
 
-        $(tr).find('.delete-user').click(function() {
+        $(tr).find('.delete-user').click(function () {
             var userid = $(this).attr('data-userid');
-            confirmBox('User "<b>' + userid + '</b>" will be deleted from server.', function(isConfirmed) {
+            confirmBox('User "<b>' + userid + '</b>" will be deleted from server.', function (isConfirmed) {
                 if (!isConfirmed) return;
 
                 socket.emit('admin', {
                     deleteUser: true,
                     userid: userid
-                }, function(isDeleted) {
+                }, function (isDeleted) {
                     if (isDeleted) {
                         $('.bd-example-modal-lg').modal('hide');
 
@@ -176,7 +175,7 @@ function updateListOfRooms(rooms) {
         return;
     }
 
-    keys.forEach(function(roomid, idx) {
+    keys.forEach(function (roomid, idx) {
         var room = rooms[roomid];
         var tr = document.createElement('tr');
         var html = '';
@@ -187,7 +186,7 @@ function updateListOfRooms(rooms) {
         html += '<td><span class="max-width" title="' + room.socketMessageEvent + '">' + room.socketMessageEvent + '</span></td>';
 
         html += '<td>';
-        Object.keys(room.session || {}).forEach(function(key) {
+        Object.keys(room.session || {}).forEach(function (key) {
             html += '<pre><b>' + key + ':</b> ' + room.session[key] + '</pre>';
         });
         html += '</td>';
@@ -195,7 +194,7 @@ function updateListOfRooms(rooms) {
         html += '<td><span class="max-width" title="' + JSON.stringify(room.extra || {}).replace(/"/g, '`') + '">' + JSON.stringify(room.extra || {}) + '</span></td>';
 
         html += '<td>';
-        room.participants.forEach(function(pid) {
+        room.participants.forEach(function (pid) {
             html += '<span class="clickable userinfo" data-userid="' + pid + '"><span class="max-width" title="' + pid + '">' + pid + '</span></span><br>';
         });
         html += '</td>';
@@ -204,20 +203,20 @@ function updateListOfRooms(rooms) {
         $(tr).html(html);
         $('#rooms-list').append(tr);
 
-        $(tr).find('.clickable').click(function() {
+        $(tr).find('.clickable').click(function () {
             $('#txt-userid').val($(this).attr('data-userid'));
             $('#view-userinfo').click();
         });
 
-        $(tr).find('.delete-room').click(function() {
+        $(tr).find('.delete-room').click(function () {
             var roomid = $(this).attr('data-roomid');
-            confirmBox('Room "<b>' + roomid + '</b>" will be deleted from server. It will disconnect and remove its participants as well.', function(isConfirmed) {
+            confirmBox('Room "<b>' + roomid + '</b>" will be deleted from server. It will disconnect and remove its participants as well.', function (isConfirmed) {
                 if (!isConfirmed) return;
 
                 socket.emit('admin', {
                     deleteRoom: true,
                     roomid: roomid
-                }, function(isDeleted) {
+                }, function (isDeleted) {
                     if (isDeleted) {
                         socket.emit('admin', {
                             all: true
@@ -236,7 +235,7 @@ function updateViewLogsButton() {
 
     var req = new XMLHttpRequest();
     req.open('GET', 'logs.json');
-    req.onload = function() {
+    req.onload = function () {
         var json = JSON.parse(req.responseText);
         var length = Object.keys(json).length;
         if (length) {
@@ -249,7 +248,7 @@ function updateViewLogsButton() {
 }
 // updateViewLogsButton();
 
-$('#view-logs').click(function() {
+$('#view-logs').click(function () {
     return alertBox('This feature is temporarily disabled.');
 
     $('#view-logs').html('Loading...');
@@ -257,7 +256,7 @@ $('#view-logs').click(function() {
 
     var req = new XMLHttpRequest();
     req.open('GET', 'logs.json');
-    req.onload = function() {
+    req.onload = function () {
         var json = JSON.parse(req.responseText);
         $('#view-logs').html('Error Logs');
         updateViewLogsButton();
@@ -274,7 +273,7 @@ $('#view-logs').click(function() {
         html += '<tbody>';
 
         var keys = Object.keys(json);
-        keys.forEach(function(key) {
+        keys.forEach(function (key) {
             var item = json[key];
 
             html += '<tr>';
@@ -299,11 +298,11 @@ $('#view-logs').click(function() {
         }
 
         if (keys.length) {
-            $('#clear-logs').click(function() {
+            $('#clear-logs').click(function () {
                 $('#logs-viewer').html('<div style="text-align: center; margin-bottom: 10px;">Deleting...</div>');
                 socket.emit('admin', {
                     clearLogs: true
-                }, function(isCleared) {
+                }, function (isCleared) {
                     if (isCleared) {
                         $('#logs-viewer').html('<div style="text-align: center; margin-bottom: 10px;">Error logs are cleared from logs.json.</div>');
                         updateViewLogsButton();
@@ -321,7 +320,7 @@ function getUserInfo(userid, callback) {
     socket.emit('admin', {
         userid: userid,
         userinfo: true
-    }, function(userinfo) {
+    }, function (userinfo) {
         if (userinfo.error) {
             var div = document.createElement('div');
             $(div).css({
@@ -337,7 +336,7 @@ function getUserInfo(userid, callback) {
         table.className = 'table';
         var html = '';
         html += '<tr><td>userid</td><td><button data-userid="' + userid + '" class="btn delete-user" style="float: right;margin-top: -5px;">Delete</button>' + userid + '</td></tr>';
-        ['sessionid', 'session', 'extra', 'mediaConstraints', 'sdpConstraints', 'streams'].forEach(function(item) {
+        ['sessionid', 'session', 'extra', 'mediaConstraints', 'sdpConstraints', 'streams'].forEach(function (item) {
             html += '<tr>';
             html += '<td>' + (item === 'sessionid' ? 'roomid' : item) + '</td>';
             if (typeof userinfo[item] === 'string') {
@@ -352,7 +351,7 @@ function getUserInfo(userid, callback) {
                     html += '</thead>';
                     html += '<tbody>';
 
-                    userinfo[item].forEach(function(stream) {
+                    userinfo[item].forEach(function (stream) {
                         html += '<tr>';
                         html += '<td>' + stream.streamid + '</td>';
                         html += '<td>' + stream.tracks + '</td>';
@@ -368,11 +367,11 @@ function getUserInfo(userid, callback) {
             html += '</tr>';
         });
         $(table).html(html);
-        $(table).find('.delete-user').click(function() {
+        $(table).find('.delete-user').click(function () {
             var that = this;
 
             var userid = $(this).attr('data-userid');
-            confirmBox('User "<b>' + userid + '</b>" will be deleted from server.', function(isConfirmed) {
+            confirmBox('User "<b>' + userid + '</b>" will be deleted from server.', function (isConfirmed) {
                 if (!isConfirmed) return;
 
                 $(that).prop('disabled', true).html('Deleting...');
@@ -380,7 +379,7 @@ function getUserInfo(userid, callback) {
                 socket.emit('admin', {
                     deleteUser: true,
                     userid: userid
-                }, function(isDeleted) {
+                }, function (isDeleted) {
                     if (isDeleted) {
                         $('.bd-example-modal-lg').modal('hide');
 
@@ -398,9 +397,9 @@ function getUserInfo(userid, callback) {
 }
 
 function alertBox(message, title, specialMessage, callback) {
-    callback = callback || function() {};
+    callback = callback || function () { };
 
-    $('.btn-alert-close').unbind('click').bind('click', function(e) {
+    $('.btn-alert-close').unbind('click').bind('click', function (e) {
         e.preventDefault();
         $('#alert-box').modal('hide');
         $('#confirm-box-topper').hide();
@@ -420,7 +419,7 @@ function alertBox(message, title, specialMessage, callback) {
 }
 
 function confirmBox(message, callback) {
-    $('#btn-confirm-action').html('Confirm').unbind('click').bind('click', function(e) {
+    $('#btn-confirm-action').html('Confirm').unbind('click').bind('click', function (e) {
         e.preventDefault();
         $('#confirm-box').modal('hide');
         $('#confirm-box-topper').hide();
@@ -429,7 +428,7 @@ function confirmBox(message, callback) {
 
     $('#btn-confirm-close').html('Cancel');
 
-    $('.btn-confirm-close').unbind('click').bind('click', function(e) {
+    $('.btn-confirm-close').unbind('click').bind('click', function (e) {
         e.preventDefault();
         $('#confirm-box').modal('hide');
         $('#confirm-box-topper').hide();
@@ -446,13 +445,13 @@ function confirmBox(message, callback) {
     });
 }
 
-$('#view-userinfo').click(function() {
+$('#view-userinfo').click(function () {
     var userid = $('#txt-userid').val();
     if (!userid || !userid.replace(/ /g, '').length) return;
 
     $('#view-userinfo').prop('disabled', true);
     $('#logs-viewer').html('Loading...');
-    getUserInfo(userid, function(table) {
+    getUserInfo(userid, function (table) {
         $('#logs-viewer').html('').append(table);
         $('#view-userinfo').prop('disabled', false);
     });
