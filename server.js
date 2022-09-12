@@ -92,7 +92,7 @@ function serverHandler(request, response) {
             }
         }
 
-        if(filename.indexOf(resolveURL('/admin/')) !== -1 && config.enableAdmin !== true) {
+        if(filename.indexOf(resolveURL('/admin/')) !== -1 && config.enableAdmin === true) {
             try {
                 response.writeHead(401, {
                     'Content-Type': 'text/plain'
