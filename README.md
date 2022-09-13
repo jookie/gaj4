@@ -67,6 +67,10 @@ RTCMultiConnection is using `Grunt` to compile javascript into `dist` directory:
 MONGODB_URI = mongodb+srv://dovp2:YomTov25@cluster0.rikhr.gcp.mon
 
 ## Wiki Pages
+Check out [git](https://github.com/jookie/gaj4).
+Check out our app on [heroku](https://gaj1.herokuapp.com/demos/).
+You can see us talking about GoLiveTV on [Youtube](https://www.youtube.com/channel/UCoMZ3tIn0xSbwGdhKVQwOrQ).
+
 
 1. https://dashboard.heroku.com/apps/gaj1
 2. https://github.com/jookie/gaj4
