@@ -1,3 +1,4 @@
+# git init
 # heroku login
 # $ heroku git:clone -a oxy2
 # git push --set-upstream heroku master
