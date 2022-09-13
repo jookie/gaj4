@@ -13,9 +13,7 @@
 // const app        = express();
 // app.use('/static', express.static('./static'));
 // https://javascript.plainenglish.io/create-a-node-js-video-streaming-application-3095cb2aa52c
-
 // https://github.com/daspinola/video-stream-sample/blob/master/server.js
-
 // https: //levelup.gitconnected.com/building-a-video-chat-app-with-node-js-socket-io-webrtc-26f46b213017
 
 // How To Use EJS to Template Your Node Application
