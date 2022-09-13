@@ -42,3 +42,14 @@ GoLiveTV uses a library built off of WebRTC and utilizing Socket.io called RTCMu
 Check out [git](https://github.com/jookie/gaj4).
 Check out our app on [heroku](https://gaj1.herokuapp.com/demos/).
 You can see us talking about GoLiveTV on [Youtube](https://www.youtube.com/channel/UCoMZ3tIn0xSbwGdhKVQwOrQ).
+
+## Wiki Pages
+
+1. https://dashboard.heroku.com/apps/gaj1
+2. https://github.com/jookie/gaj4
+
+1. https://git.heroku.com/ches1.git
+
+1. https://dashboard.heroku.com/apps/golivet
+1. https://dashboard.heroku.com/apps/golivet/settings
+https://github.com/jookie/GoLiveTV

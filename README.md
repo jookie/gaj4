@@ -64,12 +64,19 @@ node server --port=9001
 RTCMultiConnection is using `Grunt` to compile javascript into `dist` directory:
 
 * https://github.com/muaz-khan/RTCMultiConnection/blob/master/CONTRIBUTING.md
+MONGODB_URI = mongodb+srv://dovp2:YomTov25@cluster0.rikhr.gcp.mon
 
 ## Wiki Pages
 
-1. https://github.com/muaz-khan/RTCMultiConnection/wiki
-2. https://github.com/muaz-khan/RTCMultiConnection-Server/wiki
+1. https://dashboard.heroku.com/apps/gaj1
+2. https://github.com/jookie/gaj4
+
+1. https://git.heroku.com/ches1.git
+
+1. https://dashboard.heroku.com/apps/golivet
+1. https://dashboard.heroku.com/apps/golivet/settings
+https://github.com/jookie/GoLiveTV
 
 ## License
 
-[RTCMultiConnection](https://github.com/muaz-khan/RTCMultiConnection) is released under [MIT licence](https://github.com/muaz-khan/RTCMultiConnection/blob/master/LICENSE.md) . Copyright (c) [Muaz Khan](https://MuazKhan.com/).
+[GoLiveConnection](https://dashboard.heroku.com/apps/gaj1) is released under [ISD licence](https://dashboard.heroku.com/apps/gaj1/LICENSE.md) . Copyright (c) [Peles](https://peles.com/).
