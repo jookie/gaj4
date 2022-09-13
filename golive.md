@@ -39,5 +39,6 @@ GoLiveTV uses a library built off of WebRTC and utilizing Socket.io called RTCMu
   - custom image uploads for broadcasts and stations
   - station subscriptions
 
+Check out [git](https://github.com/jookie/gaj4).
 Check out our app on [heroku](https://gaj1.herokuapp.com/demos/).
 You can see us talking about GoLiveTV on [Youtube](https://www.youtube.com/channel/UCoMZ3tIn0xSbwGdhKVQwOrQ).
