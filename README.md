@@ -1,4 +1,19 @@
+<!-- https://www.facebook.com/noampl123/photos -->
+<!-- https://www.facebook.com/OliveryIbnGvirol -->
 ![](https://i.imgur.com/MFfRBSM.png)
+
+# Playground for web-api.js
+
+
+[![N|Solid](https://res.cloudinary.com/dlvaangxn/image/upload/c_scale,w_150/v1563630297/unx-logo.png)](https://www.unxdigital.com/)
+
+![CircleCI](https://circleci.com/gh/google/wikiloop-battlefield/tree/master.svg?style=svg)
+
+[**face-api.js**](https://www.npmjs.com/package/face-api.js) is a JavaScript face recognition API for the browser and nodejs implemented on top of tensorflow.js core. 
+
+![examples](https://raw.githubusercontent.com/unx-digital/Playground-FaceApiJS/master/examples.gif)
+
+
 
 ## Blockchain with Bitcoin
 
