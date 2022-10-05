@@ -3,9 +3,9 @@
   "preferGlobal": false,
   "version": "1.0.0",
   "author": {
-    "name"  : "Project authors",
-    "email" : "dovpeles@gmail.com",
-    "url"   : "https://dashboard.heroku.com"
+    "name": "Project authors",
+    "email": "dovpeles@gmail.com",
+    "url": "https://dashboard.heroku.com"
   },
   "description": "GAJ.COM lib runs top over API to support peer-to-peer features.",
   "repository": {
@@ -38,6 +38,7 @@
     "mongodb": "^4.7.0",
     "multistreamsmixer": "latest",
     "recordrtc": "latest",
+    "rtcmulticonnection": "^3.7.1",
     "rtcmulticonnection-server": "latest",
     "socket.io": "latest",
     "webrtc-adapter": "latest"
