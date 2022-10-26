@@ -243,6 +243,8 @@
     </article>
   
   </footer>
+
+
 <script>
 // this object is used to get uniquie rooms based on this demo
 // i.e. only those rooms that are created on this page.
@@ -251,7 +253,7 @@ var publicRoomIdentifier = 'dashboard';
 var connection = new RTCMultiConnection();
 
 connection.socketURL = '/';
-// connection.socketURL = 'https://muazkhan.com:9001/';
+// connection.socketURL = 'https://dovpeles.com:3000/';
 
 /// make this room public
 connection.publicRoomIdentifier = publicRoomIdentifier;
@@ -409,27 +411,27 @@ function joinAHiddenRoom(roomid) {
 }
 
 function openCanvasDesigner() {
-    $('#startRoomModel').modal('hide');
-    var href = location.href + 'canvas-designer.html?open=' + connection.isInitiator + '&sessionid=' + connection.sessionid + '&publicRoomIdentifier=' + connection.publicRoomIdentifier + '&userFullName=' + connection.extra.userFullName;
+    // $('#startRoomModel').modal('hide');
+    // var href = location.href + 'canvas-designer.html?open=' + connection.isInitiator + '&sessionid=' + connection.sessionid + '&publicRoomIdentifier=' + connection.publicRoomIdentifier + '&userFullName=' + connection.extra.userFullName;
     
-    if(!!connection.password) {
-      href += '&password=' + connection.password;
-    }
+    // if(!!connection.password) {
+    //   href += '&password=' + connection.password;
+    // }
 
-    var newWin = window.open(href);
-    if (!newWin || newWin.closed || typeof newWin.closed == 'undefined') {
-        var html = '';
-        html += '<p>Please click following link:</p>';
-        html += '<p><a href="' + href + '" target="_blank">';
-        if(connection.isInitiator) {
-          html += 'Click To Open The Scene';
-        }
-        else {
-          html += 'Click To Join The Scene';
-        }
-        html += '</a></p>';
-        alertBox(html, 'Popups Are Blocked');
-    }
+    // var newWin = window.open(href);
+    // if (!newWin || newWin.closed || typeof newWin.closed == 'undefined') {
+    //     var html = '';
+    //     html += '<p>Please click following link:</p>';
+    //     html += '<p><a href="' + href + '" target="_blank">';
+    //     if(connection.isInitiator) {
+    //       html += 'Click To Open The Scene';
+    //     }
+    //     else {
+    //       html += 'Click To Join The Scene';
+    //     }
+    //     html += '</a></p>';
+    //     alertBox(html, 'Popups Are Blocked');
+    // }
 }
 
 function alertBox(message, title, specialMessage, callback) {
