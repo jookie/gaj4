@@ -231,8 +231,6 @@ function updateListOfRooms(rooms) {
 }
 
 function updateViewLogsButton() {
-    return;
-
     var req = new XMLHttpRequest();
     req.open('GET', 'logs.json');
     req.onload = function () {
