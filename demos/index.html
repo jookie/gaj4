@@ -411,27 +411,27 @@ function joinAHiddenRoom(roomid) {
 }
 
 function openCanvasDesigner() {
-    // $('#startRoomModel').modal('hide');
-    // var href = location.href + 'canvas-designer.html?open=' + connection.isInitiator + '&sessionid=' + connection.sessionid + '&publicRoomIdentifier=' + connection.publicRoomIdentifier + '&userFullName=' + connection.extra.userFullName;
+    $('#startRoomModel').modal('hide');
+    var href = location.href + 'canvas-designer.html?open=' + connection.isInitiator + '&sessionid=' + connection.sessionid + '&publicRoomIdentifier=' + connection.publicRoomIdentifier + '&userFullName=' + connection.extra.userFullName;
     
-    // if(!!connection.password) {
-    //   href += '&password=' + connection.password;
-    // }
+    if(!!connection.password) {
+      href += '&password=' + connection.password;
+    }
 
-    // var newWin = window.open(href);
-    // if (!newWin || newWin.closed || typeof newWin.closed == 'undefined') {
-    //     var html = '';
-    //     html += '<p>Please click following link:</p>';
-    //     html += '<p><a href="' + href + '" target="_blank">';
-    //     if(connection.isInitiator) {
-    //       html += 'Click To Open The Scene';
-    //     }
-    //     else {
-    //       html += 'Click To Join The Scene';
-    //     }
-    //     html += '</a></p>';
-    //     alertBox(html, 'Popups Are Blocked');
-    // }
+    var newWin = window.open(href);
+    if (!newWin || newWin.closed || typeof newWin.closed == 'undefined') {
+        var html = '';
+        html += '<p>Please click following link:</p>';
+        html += '<p><a href="' + href + '" target="_blank">';
+        if(connection.isInitiator) {
+          html += 'Click To Open The Scene';
+        }
+        else {
+          html += 'Click To Join The Scene';
+        }
+        html += '</a></p>';
+        alertBox(html, 'Popups Are Blocked');
+    }
 }
 
 function alertBox(message, title, specialMessage, callback) {
