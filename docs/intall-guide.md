@@ -1,6 +1,6 @@
 # Installation Guide
 
-> This page explains how to install RTCMultiConnection.
+> This page explains how to install GAJMultiConnection.
 
 * Youtube Video: [NPM install](https://www.youtube.com/watch?v=EtsiYEW_T8Y) or [Other Videos](https://www.youtube.com/watch?v=EtsiYEW_T8Y&list=PLPRQUXAnRydKdyun-vjKPMrySoow2N4tl)
 
@@ -166,4 +166,4 @@ heroku config:set NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false NODE_MODULES
 
 ## License
 
-[RTCMultiConnection](https://github.com/muaz-khan/RTCMultiConnection) is released under [MIT licence](https://github.com/muaz-khan/RTCMultiConnection/blob/master/LICENSE.md) . Copyright (c) [Muaz Khan](https://MuazKhan.com/).
+[GAJConnection](https://dashboard.heroku.com/apps/gaj1) is released under [MIT licence](https://github.com/muaz-khan/RTCMultiConnection/blob/master/LICENSE.md) . Copyright (c) [GAJConnection](Your app can be found at https://gaj1.herokuapp.com/).
