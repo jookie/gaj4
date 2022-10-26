@@ -247,7 +247,7 @@ function updateViewLogsButton() {
 // updateViewLogsButton();
 
 $('#view-logs').click(function () {
-    return alertBox('This feature is temporarily disabled.');
+    // return alertBox('This feature is temporarily disabled.');
 
     $('#view-logs').html('Loading...');
     $('#logs-viewer').html('Loading...');
