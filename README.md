@@ -12,8 +12,6 @@
 
 ![examples](https://raw.githubusercontent.com/unx-digital/Playground-FaceApiJS/master/examples.gif)
 
-
-
 ## Blockchain with Bitcoin
 
 Blockchain network - peers would mine blocks in the browser and communicate via webrtc in the browser.
