@@ -3,11 +3,11 @@
   "preferGlobal": false,
   "version": "1.0.0",
   "author": {
-    "name"  : "Project authors",
-    "email" : "dovpeles@gmail.com",
-    "url"   : "https://dashboard.heroku.com"
+    "name": "dov, nadav ,noam, tal",
+    "email": "dovpeles@gmail.com",
+    "url": "https://dashboard.heroku.com"
   },
-  "description": "GAJ.COM lib runs top over API to support peer-to-peer features.",
+  "description": "GAJ.COM lib runs top over API to support peer-to-peer connection.",
   "repository": {
     "type": "git",
     "url": "https://gaj1.herokuapp.com"
@@ -21,13 +21,7 @@
   },
   "main": "./dist/RTCMultiConnection.js",
   "keywords": [
-    "webcoin",
     "bitcoin",
-    "peer-to-peer",
-    "peer2peer",
-    "p2p",
-    "webrtc",
-    "webrtc-library",
     "webrtc"
   ],
   "dependencies": {
@@ -38,6 +32,7 @@
     "mongodb": "^4.7.0",
     "multistreamsmixer": "latest",
     "recordrtc": "latest",
+    "rtcmulticonnection": "^3.7.1",
     "rtcmulticonnection-server": "latest",
     "socket.io": "latest",
     "webrtc-adapter": "latest"

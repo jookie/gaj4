@@ -1,3 +1,13 @@
+<!-- https://www.facebook.com/noampl123/photos -->
+<!-- https://www.facebook.com/OliveryIbnGvirol -->
+
+
+[![N|Solid](https://res.cloudinary.com/dlvaangxn/image/upload/c_scale,w_150/v1563630297/unx-logo.png)](https://www.unxdigital.com/)
+
+[**face-api.js**](https://www.npmjs.com/package/face-api.js) is a JavaScript face recognition API for the browser and nodejs implemented on top of tensorflow.js core. 
+
+![examples](https://raw.githubusercontent.com/unx-digital/Playground-FaceApiJS/master/examples.gif)
+
 # GoLive Radio - live broadcasting
 
 ## Introduction
@@ -27,7 +37,16 @@ The security system based on artificial intelligence relies on our machine learn
 
 ## The Technology Used
 
-GoLiveTV uses a library built off of WebRTC and utilizing Socket.io called RTCMulticonnection. Socket.io is used to form a peer-to-peer connection taking the broadcasting burden off of the server. Each broadcast is capable of hosting up to 1000 connections. 
+GoLiveTV uses a library built off of WebRTC and utilizing Socket.io. Socket.io is used to form a peer-to-peer connection taking the broadcasting burden off of the server. Each broadcast is capable of hosting up to 1000 connections. 
+
+# Playground for GoLive Radio.js
+
+[![N|Solid](https://res.cloudinary.com/dlvaangxn/image/upload/c_scale,w_150/v1563630297/unx-logo.png)](https://www.unxdigital.com/)
+
+[**face-api.js**](https://www.npmjs.com/package/face-api.js) is a JavaScript face recognition API for the browser and nodejs implemented on top of tensorflow.js core. 
+
+![examples](https://raw.githubusercontent.com/unx-digital/Playground-FaceApiJS/master/examples.gif)
+
 
 ## Future goals for this project:
   - call-in system
@@ -55,3 +74,46 @@ You can see us talking about GoLiveTV on [Youtube](https://www.youtube.com/chann
 1. https://dashboard.heroku.com/apps/golivet
 1. https://dashboard.heroku.com/apps/golivet/settings
 https://github.com/jookie/GoLiveTV
+
+# Running the examples to get some inspiration
+
+Clone the repository:
+
+``` bash
+git clone https://github.com/unx-digital/Playground-FaceApiJS.git
+```
+
+## Running the Browser Examples
+
+``` bash
+cd Playground-FaceApiJS/examples/examples-browser
+npm i
+npm start
+```
+
+Browse to http://localhost:3000/.
+
+## Running the Nodejs Examples
+
+``` bash
+cd Playground-FaceApiJS/examples/examples-nodejs
+npm i
+```
+
+Now run one of the examples using ts-node:
+
+``` bash
+ts-node faceDetection.ts
+```
+
+Or simply compile and run them with node:
+
+``` bash
+tsc faceDetection.ts
+node faceDetection.js
+```
+
+#### [Official Documentation](https://github.com/justadudewhohacks/face-api.js/blob/master/README.md)
+
+###### keep on track [face-api.js](https://github.com/justadudewhohacks/face-api.js?files=1) :raised_hands:
+

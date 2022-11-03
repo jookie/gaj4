@@ -3,7 +3,7 @@
 # $ heroku git:clone -a oxy2
 # git push --set-upstream heroku master
 # heroku git:remote -a <your-app-name> 
-# git push heroku is1:master
+# git push heroku <name>
 git add .
 git commit -am "fix:readme"
 git push 

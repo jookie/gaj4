@@ -6,30 +6,23 @@
 // https: //medium.com/3mig4/stream-a-video-using-express-js-and-socket-io-6c4d1dd263b9
 // http://yhsiang.logdown.com/posts/2014/04/17/stream-to-youtube-english
 // https://medium.com/the-phi/youtube-downloader-using-node-js-87af683d1dfc
-// npm install cors, express, ytdl-core
-// const express    = require(‘express’);
-// const cors       = require(‘cors’);
+
+// npm install ytdl-core
 // const ytdl       = require(‘ytdl - exec’);
-// const app        = express();
-// app.use('/static', express.static('./static'));
-// https://javascript.plainenglish.io/create-a-node-js-video-streaming-application-3095cb2aa52c
+////
+// https://javascript.plainenglish.iohttps://dashboard.heroku.com/apps/info22/create-a-node-js-video-streaming-application-3095cb2aa52c
 // https://github.com/daspinola/video-stream-sample/blob/master/server.js
 // https: //levelup.gitconnected.com/building-a-video-chat-app-with-node-js-socket-io-webrtc-26f46b213017
+///
+import { lstatSync, statSync, readFile, existsSync, readFileSync } from 'fs';
+import { join } from 'path';
+import { parse } from 'url';
+import httpServer, { createServer } from 'http';
 
-// How To Use EJS to Template Your Node Application
-// https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
+import ioServer from 'socket.io';
+import { BASH_COLORS_HELPER as _BASH_COLORS_HELPER, getValuesFromConfigJson as _getValuesFromConfigJson, getBashParameters as _getBashParameters, resolveURL as _resolveURL, beforeHttpListen, afterHttpListen, addSocket } from 'rtcmulticonnection-server';
 
-// https://muazkhan.com:9001/demos/
-
-const fs        = require('fs');
-const path      = require('path');
-const url       = require('url');
-var httpServer  = require('http');
-
-const ioServer                  = require('socket.io');
-const RTCMultiConnectionServer  = require('rtcmulticonnection-server');
-
-var PORT        = 9001;
+var PORT        = 3001;
 var isUseHTTPs  = false;
 
 const jsonPath = {
@@ -37,10 +30,10 @@ const jsonPath = {
     logs: 'logs.json'
 };
 
-const BASH_COLORS_HELPER = RTCMultiConnectionServer.BASH_COLORS_HELPER;
-const getValuesFromConfigJson = RTCMultiConnectionServer.getValuesFromConfigJson;
-const getBashParameters = RTCMultiConnectionServer.getBashParameters;
-const resolveURL = RTCMultiConnectionServer.resolveURL;
+const BASH_COLORS_HELPER = _BASH_COLORS_HELPER;
+const getValuesFromConfigJson = _getValuesFromConfigJson;
+const getBashParameters = _getBashParameters;
+const resolveURL = _resolveURL;
 
 var config = getValuesFromConfigJson(jsonPath);
 config = getBashParameters(config, BASH_COLORS_HELPER);
@@ -69,8 +62,8 @@ function serverHandler(request, response) {
                 config.dirPath = null;
             }
 
-            uri = url.parse(request.url).pathname;
-            filename = path.join(config.dirPath ? resolveURL(config.dirPath) : process.cwd(), uri);
+            uri = parse(request.url).pathname;
+            filename = join(config.dirPath ? resolveURL(config.dirPath) : process.cwd(), uri);
         } catch (e) {
             pushLogs(config, 'url.parse', e);
         }
@@ -82,7 +75,7 @@ function serverHandler(request, response) {
                 response.writeHead(401, {
                     'Content-Type': 'text/plain'
                 });
-                response.write('401 Unauthorized: ' + path.join('/', uri) + '\n');
+                response.write('401 Unauthorized: ' + join('/', uri) + '\n');
                 response.end();
                 return;
             } catch (e) {
@@ -95,7 +88,7 @@ function serverHandler(request, response) {
                 response.writeHead(401, {
                     'Content-Type': 'text/plain'
                 });
-                response.write('401 Unauthorized: ' + path.join('/', uri) + '\n');
+                response.write('401 Unauthorized: ' + join('/', uri) + '\n');
                 response.end();
                 return;
             } catch (e) {
@@ -123,7 +116,7 @@ function serverHandler(request, response) {
                 response.writeHead(404, {
                     'Content-Type': 'text/plain'
                 });
-                response.write('404 Not Found: ' + path.join('/', uri) + '\n');
+                response.write('404 Not Found: ' + join('/', uri) + '\n');
                 response.end();
                 return;
             } catch (e) {
@@ -144,7 +137,7 @@ function serverHandler(request, response) {
         var stats;
 
         try {
-            stats = fs.lstatSync(filename);
+            stats = lstatSync(filename);
 
             if (filename.search(/demos/g) === -1 && filename.search(/admin/g) === -1 && stats.isDirectory() && config.homePage === '/demos/index.html') {
                 if (response.redirect) {
@@ -161,13 +154,13 @@ function serverHandler(request, response) {
             response.writeHead(404, {
                 'Content-Type': 'text/plain'
             });
-            response.write('404 Not Found: ' + path.join('/', uri) + '\n');
+            response.write('404 Not Found: ' + join('/', uri) + '\n');
             response.end();
             return;
         }
 
         try {
-            if (fs.statSync(filename).isDirectory()) {
+            if (statSync(filename).isDirectory()) {
                 response.writeHead(404, {
                     'Content-Type': 'text/html'
                 });
@@ -207,12 +200,12 @@ function serverHandler(request, response) {
             contentType = 'image/png';
         }
 
-        fs.readFile(filename, 'binary', function(err, file) {
+        readFile(filename, 'binary', function(err, file) {
             if (err) {
                 response.writeHead(500, {
                     'Content-Type': 'text/plain'
                 });
-                response.write('404 Not Found: ' + path.join('/', uri) + '\n');
+                response.write('404 Not Found: ' + join('/', uri) + '\n');
                 response.end();
                 return;
             }
@@ -253,25 +246,25 @@ if (isUseHTTPs) {
 
     var pfx = false;
 
-    if (!fs.existsSync(config.sslKey)) {
+    if (!existsSync(config.sslKey)) {
         console.log(BASH_COLORS_HELPER.getRedFG(), 'sslKey:\t ' + config.sslKey + ' does not exist.');
     } else {
         pfx = config.sslKey.indexOf('.pfx') !== -1;
-        options.key = fs.readFileSync(config.sslKey);
+        options.key = readFileSync(config.sslKey);
     }
 
-    if (!fs.existsSync(config.sslCert)) {
+    if (!existsSync(config.sslCert)) {
         console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCert:\t ' + config.sslCert + ' does not exist.');
     } else {
-        options.cert = fs.readFileSync(config.sslCert);
+        options.cert = readFileSync(config.sslCert);
     }
 
     if (config.sslCabundle) {
-        if (!fs.existsSync(config.sslCabundle)) {
+        if (!existsSync(config.sslCabundle)) {
             console.log(BASH_COLORS_HELPER.getRedFG(), 'sslCabundle:\t ' + config.sslCabundle + ' does not exist.');
         }
 
-        options.ca = fs.readFileSync(config.sslCabundle);
+        options.ca = readFileSync(config.sslCabundle);
     }
 
     if (pfx === true) {
@@ -280,21 +273,21 @@ if (isUseHTTPs) {
         };
     }
 
-    httpApp = httpServer.createServer(options, serverHandler);
+    httpApp = createServer(options, serverHandler);
 } else {
-    httpApp = httpServer.createServer(serverHandler);
+    httpApp = createServer(serverHandler);
 }
 
-RTCMultiConnectionServer.beforeHttpListen(httpApp, config);
+beforeHttpListen(httpApp, config);
 httpApp = httpApp.listen(process.env.PORT || PORT, process.env.IP || "0.0.0.0", function() {
-    RTCMultiConnectionServer.afterHttpListen(httpApp, config);
+    afterHttpListen(httpApp, config);
 });
 
 // --------------------------
 // socket.io codes goes below
 
 ioServer(httpApp).on('connection', function(socket) {
-    RTCMultiConnectionServer.addSocket(socket, config);
+    addSocket(socket, config);
 
     // ----------------------
     // below code is optional
